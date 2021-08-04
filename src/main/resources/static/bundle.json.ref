@@ -1,0 +1,13 @@
+{
+  "applications": [
+    {
+      "type": "sandbox",
+      "id": "e2e-ext-app",
+      "name": "E2E Extensibility API Test app",
+      "description": "App to test e2e clients extensibility API",
+      "publisher": "Symphony",
+      "url": "https://35.237.17.67:4000/controller.html",
+      "domain": "35.237.17.67"
+    }
+  ]
+}

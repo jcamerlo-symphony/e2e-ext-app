@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e2e-ext-app-deployment
+  labels:
+    app: e2e-ext-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e2e-ext-app
+  template:
+    metadata:
+      labels:
+        app: e2e-ext-app
+    spec:
+      containers:
+        - name: e2e-ext-app
+          image: "gcr.io/symphony-gce-dev/e2e-ext-app:latest"
+          env:
+            - name: SELF_IP
+              value: "{{SELF_IP}}"
+            - name: TARGET_HOSTNAME
+              value: "{{NAMESPACE}}.gke-03.epod.dev.symphony.com"
+            - name: TARGET_PORT
+              value: "443"
+            - name: TARGET_NAMESPACE
+              value: "{{NAMESPACE}}"
+          ports:
+            - containerPort: 4000
